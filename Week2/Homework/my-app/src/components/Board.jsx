@@ -1,8 +1,9 @@
 import Cell from "./Cell";
+import { css } from "@emotion/react";
 
 const Board = ({ boardState, onCellClick }) => {
   return (
-    <table cellPadding="30" cellSpacing="0" border="1">
+    <table css={boardStyle}>
       <tbody>
         {boardState.map((line, i) => (
           <tr key={i}>
@@ -16,4 +17,9 @@ const Board = ({ boardState, onCellClick }) => {
   );
 };
 
+// 테이블 스타일
+const boardStyle = css`
+  margin: 40px auto;
+  border-spacing: 5px;
+`
 export default Board;

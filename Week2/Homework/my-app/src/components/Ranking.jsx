@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { loadRecords, clearRecords } from "../functions";
+import { css } from "@emotion/react";
 
 const Ranking = () => {
   const [records, setRecords] = useState(() => loadRecords());
@@ -15,16 +16,18 @@ const Ranking = () => {
   );
 
   return (
-    <div>
-      <div>
-        <h2>랭킹</h2>
-        <button onClick={handleReset}>초기화</button>
+    <div css={rankingStyle}>
+      <div css={headerStyle}>
+        <h2>🏆 랭킹</h2>
+        <button css={resetStyle} onClick={handleReset}>
+          초기화
+        </button>
       </div>
 
       {sortedRecords.length === 0 ? (
         <p>기록이 없습니다.</p>
       ) : (
-        <table border="1" cellPadding="10" cellSpacing="0">
+        <table css={tableStyle}>
           <thead>
             <tr>
               <th>순위</th>
@@ -48,5 +51,43 @@ const Ranking = () => {
     </div>
   );
 };
+
+// 랭킹 스타일
+const rankingStyle = css`
+  width: 600px;
+  margin: 40px auto;
+`;
+
+// 헤더 스타일
+const headerStyle = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+// 초기화 버튼 스타일
+const resetStyle = css`
+  padding: 5px 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  background: transparent; // 투명한 배경색
+  color: red;
+`;
+
+// 테이블 스타일
+const tableStyle = css`
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+
+  th,td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background: aquamarine;
+  }
+`;
 
 export default Ranking;
