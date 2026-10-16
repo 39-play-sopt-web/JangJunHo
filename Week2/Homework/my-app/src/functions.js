@@ -36,3 +36,8 @@ export const saveRecord = (record) => {
   records.push(record);
   localStorage.setItem("records", JSON.stringify(records));
 };
+
+// localStorage의 기록 전부 삭제
+export const clearRecords = () => {
+  localStorage.removeItem("records");
+};
