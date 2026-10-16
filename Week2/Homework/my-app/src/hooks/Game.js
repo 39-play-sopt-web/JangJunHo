@@ -13,6 +13,7 @@ export const useGame = () => {
   const [leftNumbers, setLeftNumbers] = useState(() =>
     range(size * size + 1, max)
   );
+  const [result, setResult] = useState(null); // 모달 구현
   const timer = useTimer();
 
   const startNewGame = (newSize) => {
@@ -37,8 +38,7 @@ export const useGame = () => {
     if (target === max) {
       const time = timer.pause() / 1000;
       saveRecord({ date: new Date().toLocaleString("ko-KR"), level, time });
-      alert(`게임 종료! 걸린 시간: ${time.toFixed(2)}초`);
-      startNewGame(size);
+      setResult(time); // alert 제거 및 모달 구현
       return;
     }
 
@@ -54,6 +54,11 @@ export const useGame = () => {
     );
   };
 
+  const closeResult = () => { // 모달 닫기
+    setResult(null);
+    startNewGame(size);
+  };
+
   return {
     level,
     max,
@@ -62,5 +67,7 @@ export const useGame = () => {
     count: timer.count,
     clickCell,
     changeLevel,
+    result, 
+    closeResult,
   };
 };
