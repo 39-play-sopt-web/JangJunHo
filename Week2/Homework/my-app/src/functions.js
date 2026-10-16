@@ -24,3 +24,15 @@ export const createBoard = (size) => {
   }
   return board;
 };
+
+// localStorage에서 기록 목록 불러오기
+export const loadRecords = () => {
+  return JSON.parse(localStorage.getItem("records")) || [];
+};
+
+// 기존 기록 뒤에 새 기록으로 localStorage에 저장
+export const saveRecord = (record) => {
+  const records = loadRecords();
+  records.push(record);
+  localStorage.setItem("records", JSON.stringify(records));
+};

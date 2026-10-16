@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTimer } from "./Timer";
 import { SIZES } from "../constants";
-import { createBoard, range, pickRandom } from "../functions";
+import { createBoard, range, pickRandom, saveRecord } from "../functions";
 
 export const useGame = () => {
   const [level, setLevel] = useState(1);
@@ -36,6 +36,7 @@ export const useGame = () => {
 
     if (target === max) {
       const time = timer.pause() / 1000;
+      saveRecord({ date: new Date().toLocaleString("ko-KR"), level, time });
       alert(`게임 종료! 걸린 시간: ${time.toFixed(2)}초`);
       startNewGame(size);
       return;
