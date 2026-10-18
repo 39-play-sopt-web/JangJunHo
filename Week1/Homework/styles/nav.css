@@ -1,0 +1,23 @@
+nav {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+}
+
+nav a {
+  display: block;
+  padding: 15px;
+  background: black;
+}
+
+nav a:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+nav a:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+nav a:hover {
+  background: skyblue;
+}

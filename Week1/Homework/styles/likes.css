@@ -1,0 +1,27 @@
+.scroll {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+}
+
+.track li {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+  scroll-snap-align: start;
+}
+
+.loop {
+  animation: loop 20s linear infinite;
+}
+
+@keyframes loop {
+  to {
+    transform: translateX(-50%);
+  }
+}
