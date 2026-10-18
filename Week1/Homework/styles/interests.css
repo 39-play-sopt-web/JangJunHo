@@ -18,15 +18,15 @@
   height: 200px;
 }
 
-.cards li, button {
+.cards li, .cards button {
   transition: 0.3s;
 }
 
-.like:hover {
+.cards .like:hover {
   background: blue;
 }
 
-.dislike:hover {
+.cards .dislike:hover {
   background: red;
 }
 
