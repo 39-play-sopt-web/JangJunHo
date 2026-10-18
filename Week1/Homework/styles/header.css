@@ -1,0 +1,37 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
+  background: black;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.avatar:hover {
+  box-shadow: 0 5px 10px white;
+}
+
+.social {
+  text-align: right;
+}
+
+.social a {
+  margin-right: 10px;
+}
+
+.social img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+}

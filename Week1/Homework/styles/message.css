@@ -1,0 +1,4 @@
+.message-text::before, .message-text::after {
+  content: " ♥ ";
+  color: red;
+}

@@ -1,0 +1,49 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.cards li {
+  text-align: center;
+  background: black;
+}
+
+.cards li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px white;
+}
+
+.cards img {
+  height: 200px;
+}
+
+.cards li, .cards button {
+  transition: 0.3s;
+}
+
+.cards .like:hover {
+  background: blue;
+}
+
+.cards .dislike:hover {
+  background: red;
+}
+
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
