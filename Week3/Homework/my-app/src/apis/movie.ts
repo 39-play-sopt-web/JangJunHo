@@ -2,9 +2,13 @@ import { apiClient } from "./apiClient";
 import type { MovieDetail, MovieListResponse } from "../types/movieType";
 
 // 영화 목록
-export const getMovies = async (page: number) => {
+export const getMovies = async (page: number, gte: number, lte: number) => {
   const res = await apiClient.get<MovieListResponse>("/discover/movie", {
-    params: { page },
+    params: {
+      page,
+      "vote_average.gte": gte,
+      "vote_average.lte": lte,
+    },
   });
   return res.data;
 };

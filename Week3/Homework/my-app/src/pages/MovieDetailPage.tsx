@@ -9,23 +9,19 @@ const MovieDetailPage = () => {
   const [movie, setMovie] = useState<MovieDetail | null>(null);
 
   useEffect(() => {
-    if (!movieId) return;
-    let ignore = false;
-
-    getMovieDetail(movieId)
-      .then((data) => {
-        if (!ignore) setMovie(data);
-      })
-      .catch((error) => {
+    const fetchMovie = async () => {
+      if (!movieId) return;
+      try {
+        const data = await getMovieDetail(movieId);
+        setMovie(data);
+      } catch (error) {
         console.error("영화 정보를 불러오지 못했습니다.", error);
-      });
-
-    return () => {
-      ignore = true;
+      }
     };
+    fetchMovie();
   }, [movieId]);
 
-  // 아직 데이터가 없으면 로딩 문구
+  // 로딩 문구
   if (!movie) return <p>불러오는 중...</p>;
 
   return (
