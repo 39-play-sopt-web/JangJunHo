@@ -1,9 +1,13 @@
 export const theme = {
   colors: {
-    background: "black",
-    card: "gray",
-    primary: "aquamarine",
-    text: "lightblue",
-    subText: "yellow",
+    background: "pink",
+    card: "coral",
+    primary: "yellow",
+    text: "black",
+    subText: "lightblue",
+    sopt: "aqua",
+    movie: "red",
+    date: "lightgray",
+    border: "dimgray",
   },
 };

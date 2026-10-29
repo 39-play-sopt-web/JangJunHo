@@ -1,11 +1,10 @@
-import { Link, Outlet } from "react-router";
+import { Outlet } from "react-router";
+import Header from "./Header";
 
 const Layout = () => {
   return (
     <>
-      <header>
-        <Link to="/">PLAY SOPT MOVIE</Link>
-      </header>
+      <Header />
       <main>
         <Outlet />
       </main>
