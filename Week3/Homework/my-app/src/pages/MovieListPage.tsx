@@ -3,6 +3,7 @@ import { getMovies } from "../apis/movie";
 import type { Movie } from "../types/movieType";
 import MovieCard from "../components/MovieCard";
 import { STAR_FILTERS } from "../constants/star";
+import * as S from "../styles/MovieListPage.styles";
 
 const MovieListPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -44,12 +45,12 @@ const MovieListPage = () => {
   }, [movies]);
 
   return (
-    <section>
+    <S.Wrapper>
       <h2>영화 둘러보기</h2>
 
-      <div>
+      <S.FilterList>
         {STAR_FILTERS.map((item) => (
-          <button
+          <S.FilterButton
             key={item.label}
             aria-pressed={item.label === filter.label}
             onClick={() => {
@@ -59,19 +60,19 @@ const MovieListPage = () => {
             }}
           >
             {item.label}
-          </button>
+          </S.FilterButton>
         ))}
-      </div>
+      </S.FilterList>
 
-      <ul>
+      <S.MovieGrid>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
-      </ul>
+      </S.MovieGrid>
 
       {hasMore && <div ref={bottomRef}>불러오는 중...</div>}
-    </section>
+    </S.Wrapper>
   );
-};
+}
 
 export default MovieListPage;

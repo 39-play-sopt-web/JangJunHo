@@ -9,5 +9,7 @@ export const theme = {
     movie: "red",
     date: "lightgray",
     border: "dimgray",
+    button: "dimgray",
+    buttonText: "white",
   },
 };
