@@ -12,7 +12,7 @@ const MovieDetailPage = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       if (!movieId) return;
-      try {
+      try { /* TMDB api로 불러오고 실패시 에러 처리 */
         const data = await getMovieDetail(movieId);
         setMovie(data);
       } catch (error) {

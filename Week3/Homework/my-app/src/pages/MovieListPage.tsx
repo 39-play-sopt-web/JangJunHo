@@ -14,7 +14,7 @@ const MovieListPage = () => {
 
   // 필터나 페이지가 바뀌면 영화 불러오기
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchMovies = async () => { 
       try {
         const data = await getMovies(page, filter.gte, filter.lte);
         if (page === 1) {
@@ -28,7 +28,7 @@ const MovieListPage = () => {
       }
     };
     fetchMovies();
-  }, [filter, page]);
+  }, [filter, page]); // 의존성 배열
 
   // 무한 스크롤
   useEffect(() => {
