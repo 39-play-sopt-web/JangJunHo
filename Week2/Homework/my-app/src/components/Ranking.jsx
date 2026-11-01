@@ -38,7 +38,7 @@ const Ranking = () => {
           </thead>
           <tbody>
             {sortedRecords.map((record, i) => (
-              <tr key={record.date}>
+              <tr key={record.id}>
                 <td>{i + 1}</td>
                 <td>Level {record.level}</td>
                 <td>{record.time.toFixed(2)}초</td>

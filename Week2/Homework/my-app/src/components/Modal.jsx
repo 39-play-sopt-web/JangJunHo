@@ -7,7 +7,7 @@ const Modal = ({ time, onClose, level }) => {
             <div css={modalContentStyle}>
                 <h2>🎉 Level {level} 클리어!</h2>
                 <p>{time.toFixed(2)} 초</p>
-                <button onClick={onClose}>닫기</button>
+                <button type="button" onClick={onClose}>닫기</button>
             </div>
         </div>,
         document.body

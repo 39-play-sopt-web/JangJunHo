@@ -37,7 +37,7 @@ export const useGame = () => {
 
     if (target === max) {
       const time = timer.pause() / 1000;
-      saveRecord({ date: new Date().toLocaleString("ko-KR"), level, time });
+      saveRecord({ id: Date.now(), date: new Date().toLocaleString("ko-KR"), level, time });
       setResult(time); // alert 제거 및 모달 구현
       return;
     }
