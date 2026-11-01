@@ -54,7 +54,8 @@ const Ranking = () => {
 
 // 랭킹 스타일
 const rankingStyle = css`
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   margin: 40px auto;
 `;
 
