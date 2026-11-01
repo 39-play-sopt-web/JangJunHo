@@ -6,15 +6,15 @@ export const useTimer = () => {
   const intervalRef = useRef(null);
 
   const start = () => {
-    startTimeRef.current = Date.now();
+    startTimeRef.current = performance.now();
     intervalRef.current = setInterval(() => {
-      setCount(Date.now() - startTimeRef.current);
+      setCount(performance.now() - startTimeRef.current);
     }, 10);
   };
 
   const pause = () => {
     clearInterval(intervalRef.current);
-    const elapsed = Date.now() - startTimeRef.current;
+    const elapsed = performance.now() - startTimeRef.current;
     setCount(elapsed);
     return elapsed;
   };

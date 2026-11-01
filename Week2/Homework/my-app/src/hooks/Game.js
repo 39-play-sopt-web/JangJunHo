@@ -21,6 +21,7 @@ export const useGame = () => {
     setBoardState(createBoard(newSize));
     setTarget(1);
     setLeftNumbers(range(newSize * newSize + 1, newSize * newSize * 2));
+    setResult(null);
   };
 
   const changeLevel = (newLevel) => {
@@ -55,7 +56,6 @@ export const useGame = () => {
   };
 
   const closeResult = () => { // 모달 닫기
-    setResult(null);
     startNewGame(size);
   };
 
