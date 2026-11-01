@@ -7,10 +7,10 @@ const Header = ({ menu, onMenuChange, level, onLevelChange, count }) => {
     <header css={headerStyle}>
       <h2>🔢 숫자 클릭 게임</h2>
       <nav css={menuStyle}>
-        <button css={[buttonStyle, menu === "game" && activeStyle]} onClick={() => onMenuChange("game")}>
+        <button type="button" css={[buttonStyle, menu === "game" && activeStyle]} onClick={() => onMenuChange("game")} aria-label="게임">
             게임
         </button>
-        <button css={[buttonStyle, menu === "ranking" && activeStyle]} onClick={() => onMenuChange("ranking")}>
+        <button type="button" css={[buttonStyle, menu === "ranking" && activeStyle]} onClick={() => onMenuChange("ranking")} aria-label="랭킹">
             랭킹
         </button>
       </nav>
