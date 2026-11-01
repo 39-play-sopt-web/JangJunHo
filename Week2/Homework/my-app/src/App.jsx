@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGame } from "./hooks/Game";
+import { useGame } from "./hooks/useGame";
 import { Global, css } from "@emotion/react";
 import Header from "./components/Header";
 import Target from "./components/Target";

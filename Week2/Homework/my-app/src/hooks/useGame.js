@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTimer } from "./Timer";
+import { useTimer } from "./useTimer";
 import { SIZES } from "../constants";
 import { createBoard, range, pickRandom, saveRecord } from "../functions";
 
