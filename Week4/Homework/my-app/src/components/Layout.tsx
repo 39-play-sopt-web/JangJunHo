@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Header from "./Header";
 
-// 헤더 있는 페이지들의 공통 레이아웃
+// 공통 레이아웃
 const Layout = () => {
   return (
     <>
