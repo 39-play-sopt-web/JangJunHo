@@ -2,7 +2,7 @@ import { instance } from "./instance";
 import type { ApiResponse } from "../types/api";
 import type { Post, PostListResponse, CreatePostRequest, UpdatePostRequest } from "../types/post";
 
-// 게시글 목록 조회 (검색어가 비어 있으면 전체 목록)
+// 게시글 목록 조회
 export const getPosts = async (keyword: string) => {
   const response = await instance.get<ApiResponse<PostListResponse>>("/posts", {
     params: { keyword },
