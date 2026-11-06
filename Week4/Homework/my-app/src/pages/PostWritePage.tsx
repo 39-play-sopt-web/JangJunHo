@@ -15,7 +15,7 @@ const PostWritePage = () => {
     mutationFn: createPost,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
-      alert("게시글이 등록되었어요.");
+      alert(`${author}님, 게시글이 등록되었어요!`);
       navigate("/posts");
     },
     onError: () => {
@@ -35,27 +35,48 @@ const PostWritePage = () => {
           mutate({ author, title, content });
         }}
       >
-        <input
-          className={styles.input}
-          value={author}
-          placeholder="작성자 (20자 이내)"
-          maxLength={20}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          value={title}
-          placeholder="제목 (50자 이내)"
-          maxLength={50}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          className={styles.textarea}
-          value={content}
-          placeholder="내용 (1000자 이내)"
-          maxLength={1000}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="title">
+            제목
+          </label>
+          <input
+            id="title"
+            className={styles.input}
+            value={title}
+            placeholder="제목을 입력하세요"
+            maxLength={50}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <p className={styles.counter}>{title.length} / 50</p>
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="content">
+            본문
+          </label>
+          <textarea
+            id="content"
+            className={styles.textarea}
+            value={content}
+            placeholder="본문을 입력하세요"
+            maxLength={1000}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <p className={styles.counter}>{content.length} / 1000</p>
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="author">
+            작성자
+          </label>
+          <input
+            id="author"
+            className={styles.input}
+            value={author}
+            placeholder="이름을 입력하세요"
+            maxLength={20}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+          <p className={styles.counter}>{author.length} / 20</p>
+        </div>
         <div className={styles.buttons}>
           <button type="button" className={styles.cancelButton} onClick={() => navigate("/posts")}>
             목록으로

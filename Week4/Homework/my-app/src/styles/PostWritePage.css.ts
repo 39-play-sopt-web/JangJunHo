@@ -15,7 +15,25 @@ export const heading = style({
 export const form = style({
   display: "flex",
   flexDirection: "column",
-  gap: "12px",
+  gap: "16px",
+});
+
+export const field = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "6px",
+});
+
+export const label = style({
+  fontSize: "13px",
+  fontWeight: 600,
+});
+
+export const counter = style({
+  margin: 0,
+  textAlign: "right",
+  fontSize: "12px",
+  color: vars.colors.subText,
 });
 
 export const input = style({
@@ -24,6 +42,10 @@ export const input = style({
   borderRadius: "8px",
   backgroundColor: vars.colors.surface,
   color: vars.colors.text,
+  ":focus": {
+    outline: "none",
+    borderColor: vars.colors.primary,
+  },
 });
 
 export const textarea = style([
