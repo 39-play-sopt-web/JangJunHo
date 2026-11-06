@@ -1,4 +1,3 @@
 export interface AuthcodeResponse {
-    authCode: string;
-    part: string;
+    authorizationCode: string; // 발급된 인증 코드
 }

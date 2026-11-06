@@ -2,5 +2,5 @@ export interface ApiResponse<T> {
   data: T;
   message: string;
   code: string;
-  idSuccess: boolean;
+  isSuccess: boolean; // 오타수정
 }
