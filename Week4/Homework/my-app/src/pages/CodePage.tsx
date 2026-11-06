@@ -15,7 +15,7 @@ const CodePage = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: issueAuthCode,
     onSuccess: (data) => {
-      setAuthCode(data.authCode);
+      setAuthCode(data.authorizationCode);
       setPart(selectedPart);
       navigate("/posts");
     },
