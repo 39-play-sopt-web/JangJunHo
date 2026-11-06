@@ -8,5 +8,7 @@ export const vars = createGlobalTheme(":root", {
     primary: "aquamarine",
     border: "white",
     hover: "gray",
+    accent: "skyblue",
+    line: "dimgray",
   },
 });
