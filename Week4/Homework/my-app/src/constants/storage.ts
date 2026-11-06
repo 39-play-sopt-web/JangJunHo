@@ -22,3 +22,7 @@ export const setPart = (part: string) => {
 export const removeAuthCode = () => {
   localStorage.removeItem(STORAGE_KEY.AUTH_CODE);
 };
+
+export const removePart = () => {
+  localStorage.removeItem(STORAGE_KEY.PART);
+};
