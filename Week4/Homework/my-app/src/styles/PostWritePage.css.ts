@@ -83,3 +83,8 @@ export const submitButton = style({
     cursor: "not-allowed",
   },
 });
+
+export const message = style({
+  textAlign: "center",
+  color: vars.colors.subText,
+});

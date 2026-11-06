@@ -25,7 +25,7 @@ export const select = style({
   borderRadius: "8px",
 });
 
-// 코드 발급 버튼 (hover 시 배경색 + 테두리 색 변경)
+// 코드 발급 버튼
 export const issueButton = style({
   padding: "12px 16px",
   border: "2px solid transparent",
@@ -45,7 +45,7 @@ export const issueButton = style({
   },
 });
 
-// 게시판 목록 보기 (링크를 버튼처럼)
+// 게시판 목록 보기
 export const listLink = style({
   padding: "12px",
   border: `1px solid ${vars.colors.border}`,

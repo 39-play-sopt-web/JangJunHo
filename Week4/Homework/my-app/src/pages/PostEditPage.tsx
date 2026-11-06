@@ -84,8 +84,8 @@ const PostEditPage = () => {
     queryFn: () => getPost(id),
   });
 
-  if (isPending) return <p>게시글을 불러오는 중...</p>;
-  if (isError) return <p>게시글을 불러오지 못했어요.</p>;
+  if (isPending) return <p className={styles.message}>게시글을 불러오는 중...</p>;
+  if (isError) return <p className={styles.message}>게시글을 불러오지 못했어요.</p>;
 
   return <PostEditForm post={post} />;
 };
