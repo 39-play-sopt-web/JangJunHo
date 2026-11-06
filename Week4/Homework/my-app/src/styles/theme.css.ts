@@ -10,5 +10,7 @@ export const vars = createGlobalTheme(":root", {
     hover: "gray",
     accent: "skyblue",
     line: "dimgray",
+    surface: "#1c1c1c",
+    subText: "gray",
   },
 });
