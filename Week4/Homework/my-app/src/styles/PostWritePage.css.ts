@@ -31,6 +31,7 @@ export const label = style({
 
 export const counter = style({
   margin: 0,
+  marginLeft: "auto",
   textAlign: "right",
   fontSize: "12px",
   color: vars.colors.subText,
@@ -87,4 +88,16 @@ export const submitButton = style({
 export const message = style({
   textAlign: "center",
   color: vars.colors.subText,
+});
+
+export const info = style({
+  display: "flex",
+  alignItems: "center",
+  marginTop: "-8px",
+});
+
+export const error = style({
+  margin: 0,
+  fontSize: "12px",
+  color: vars.colors.error,
 });

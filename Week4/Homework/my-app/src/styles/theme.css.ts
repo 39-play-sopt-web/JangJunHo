@@ -12,5 +12,6 @@ export const vars = createGlobalTheme(":root", {
     line: "dimgray",
     surface: "#1c1c1c",
     subText: "gray",
+    error: "red",
   },
 });
