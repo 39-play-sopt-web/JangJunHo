@@ -14,13 +14,18 @@ const MovieListPage = () => {
 
   // 필터나 페이지가 바뀌면 영화 불러오기
   useEffect(() => {
+    let ignore = false;
     const fetchMovies = async () => { 
       try {
         const data = await getMovies(page, filter.gte, filter.lte);
+        if (ignore) return;
         if (page === 1) {
           setMovies(data.results);
         } else {
-          setMovies((prev) => [...prev, ...data.results]);
+          setMovies((prev) => {
+            const ids = new Set(prev.map((movie) => movie.id));
+            return [...prev, ...data.results.filter((movie) => !ids.has(movie.id))];
+          });
         }
         setHasMore(page < data.total_pages);
       } catch (error) {
@@ -28,6 +33,9 @@ const MovieListPage = () => {
       }
     };
     fetchMovies();
+    return () => {
+      ignore = true;
+    };
   }, [filter, page]); // 의존성 배열
 
   // 무한 스크롤
@@ -54,6 +62,8 @@ const MovieListPage = () => {
             key={item.label}
             aria-pressed={item.label === filter.label}
             onClick={() => {
+              if (item.label === filter.label) 
+                return;
               setFilter(item);
               setPage(1);
               setMovies([]);
