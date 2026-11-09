@@ -8,6 +8,7 @@ import * as S from "../styles/MovieDetailPage.styles";
 const MovieDetailPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState<MovieDetail | null>(null);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -17,10 +18,20 @@ const MovieDetailPage = () => {
         setMovie(data);
       } catch (error) {
         console.error("영화 정보를 불러오지 못했습니다.", error);
+        setIsError(true);
       }
     };
     fetchMovie();
   }, [movieId]);
+
+  if (isError) {
+    return (
+      <S.Wrapper>
+        <p>영화 정보를 불러오지 못했어요.</p>
+        <S.BackLink to="/">← 목록으로 돌아가기</S.BackLink>
+      </S.Wrapper>
+    );
+  }
 
   // 로딩 문구
   if (!movie) return <p>불러오는 중...</p>;
