@@ -10,12 +10,14 @@ const MovieListPage = () => {
   const [filter, setFilter] = useState(STAR_FILTERS[0]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // 필터나 페이지가 바뀌면 영화 불러오기
   useEffect(() => {
     let ignore = false;
-    const fetchMovies = async () => { 
+    const fetchMovies = async () => {
+      setIsLoading(true);
       try {
         const data = await getMovies(page, filter.gte, filter.lte);
         if (ignore) return;
@@ -30,6 +32,8 @@ const MovieListPage = () => {
         setHasMore(page < data.total_pages);
       } catch (error) {
         console.error("영화 목록을 불러오지 못했습니다.", error);
+      } finally {
+        if (!ignore) setIsLoading(false);
       }
     };
     fetchMovies();
@@ -40,7 +44,7 @@ const MovieListPage = () => {
 
   // 무한 스크롤
   useEffect(() => {
-    if (!bottomRef.current || movies.length === 0) return;
+    if (!bottomRef.current || movies.length === 0 || isLoading || !hasMore) return;
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
@@ -50,7 +54,7 @@ const MovieListPage = () => {
     observer.observe(bottomRef.current);
 
     return () => observer.disconnect();
-  }, [movies]);
+  }, [movies, isLoading, hasMore]);
 
   return (
     <S.Wrapper>
