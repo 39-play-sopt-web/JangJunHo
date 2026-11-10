@@ -37,6 +37,18 @@ export const Poster = styled.img`
   object-fit: cover;
 `;
 
+// 포스터가 없을 때 대신 보여줄 영역
+export const PosterPlaceholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-color: ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.buttonText};
+  font-size: 13px;
+`;
+
 // 포스터 아래 글자 영역
 export const Info = styled.div`
   padding: 12px;
@@ -53,9 +65,13 @@ export const ReleaseDate = styled.p`
   color: ${({ theme }) => theme.colors.date};
 `;
 
-// 줄거리
+// 줄거리 (3줄 넘으면 말줄임)
 export const Overview = styled.p`
   margin: 0;
   font-size: 13px;
   color: ${({ theme }) => theme.colors.subText};
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 `;

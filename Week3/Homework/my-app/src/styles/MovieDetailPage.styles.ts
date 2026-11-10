@@ -36,6 +36,18 @@ export const Poster = styled.img`
   border-radius: 8px;
 `;
 
+// 포스터가 없을 때 대신 보여줄 영역
+export const PosterPlaceholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.buttonText};
+`;
+
 export const Title = styled.h2`
   margin-top: 0;
   font-size: 32px;
