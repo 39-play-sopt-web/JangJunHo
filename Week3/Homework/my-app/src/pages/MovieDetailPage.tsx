@@ -46,8 +46,10 @@ const MovieDetailPage = () => {
 
       {/* 왼쪽 포스터, 오른쪽 주요 정보 */}
       <S.Top>
-        {movie.poster_path && (
+        {movie.poster_path ? (
           <S.Poster src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`} alt={movie.title} />
+        ) : (
+          <S.PosterPlaceholder>이미지 없음</S.PosterPlaceholder>
         )}
         <div>
           <S.Title>{movie.title}</S.Title>
