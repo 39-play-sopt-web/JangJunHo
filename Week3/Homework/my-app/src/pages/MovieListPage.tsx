@@ -1,0 +1,92 @@
+import { useEffect, useRef, useState } from "react";
+import { getMovies } from "../apis/movie";
+import type { Movie } from "../types/movieType";
+import MovieCard from "../components/MovieCard";
+import { STAR_FILTERS } from "../constants/star";
+import * as S from "../styles/MovieListPage.styles";
+
+const MovieListPage = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [filter, setFilter] = useState(STAR_FILTERS[0]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  // 필터나 페이지가 바뀌면 영화 불러오기
+  useEffect(() => {
+    let ignore = false;
+    const fetchMovies = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getMovies(page, filter.gte, filter.lte);
+        if (ignore) return;
+        if (page === 1) {
+          setMovies(data.results);
+        } else {
+          setMovies((prev) => {
+            const ids = new Set(prev.map((movie) => movie.id));
+            return [...prev, ...data.results.filter((movie) => !ids.has(movie.id))];
+          });
+        }
+        setHasMore(page < data.total_pages);
+      } catch (error) {
+        console.error("영화 목록을 불러오지 못했습니다.", error);
+      } finally {
+        if (!ignore) setIsLoading(false);
+      }
+    };
+    fetchMovies();
+    return () => {
+      ignore = true;
+    };
+  }, [filter, page]); // 의존성 배열
+
+  // 무한 스크롤
+  useEffect(() => {
+    if (!bottomRef.current || movies.length === 0 || isLoading || !hasMore) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setPage((prev) => prev + 1);
+      }
+    });
+    observer.observe(bottomRef.current);
+
+    return () => observer.disconnect();
+  }, [movies, isLoading, hasMore]);
+
+  return (
+    <S.Wrapper>
+      <h2>영화 둘러보기</h2>
+
+      <S.FilterList>
+        {STAR_FILTERS.map((item) => (
+          <S.FilterButton
+            key={item.label}
+            aria-pressed={item.label === filter.label}
+            onClick={() => {
+              if (item.label === filter.label) 
+                return;
+              setFilter(item);
+              setPage(1);
+              setMovies([]);
+            }}
+          >
+            {item.label}
+          </S.FilterButton>
+        ))}
+      </S.FilterList>
+
+      <S.MovieGrid>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </S.MovieGrid>
+
+      {hasMore && <div ref={bottomRef}>불러오는 중...</div>}
+    </S.Wrapper>
+  );
+}
+
+export default MovieListPage;
